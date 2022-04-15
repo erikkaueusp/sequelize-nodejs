@@ -2,6 +2,20 @@ const database = require('../models')
 
 class PessoaController {
 
+
+    static async createPessoa(req, res) {
+        const pessoa = req.body
+        try {
+            const pessoaCreated = await database.Pessoas.create(pessoa)
+            return res.status(201).json(pessoaCreated)
+        } catch (error) {
+            return res.status(200).json(error.message)
+        }
+    }
+
+
+
+
     static async getAll(req, res) {
 
         try {
