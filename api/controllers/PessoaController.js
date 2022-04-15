@@ -10,8 +10,17 @@ class PessoaController {
         } catch (error) {
             return res.status(200).json(error.message)
         }
+    }
 
+    static async getId(req, res) {
+        const { id } = req.params
+        try {
 
+            const one = await database.Pessoas.findOne({ where: { id: Number(id) } })
+            return res.status(200).json(one)
+        } catch (error) {
+            return res.status(200).json(error.message)
+        }
     }
 }
 

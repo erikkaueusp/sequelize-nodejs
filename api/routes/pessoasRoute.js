@@ -4,5 +4,6 @@ const PessoaController = require("../controllers/PessoaController")
 const router = Router()
 
 router.get('/pessoas', PessoaController.getAll)
+router.get('/pessoas/:id', PessoaController.getId)
 
 module.exports = router
