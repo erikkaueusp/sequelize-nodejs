@@ -19,7 +19,7 @@ module.exports = {
             turma_id: {
                 allowNull: false,
                 type: Sequelize.INTEGER,
-                references: { model: 'Pessoas', key: 'id' }
+                references: { model: 'Turmas', key: 'id' }
             },
             createdAt: {
                 allowNull: false,
