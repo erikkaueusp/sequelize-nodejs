@@ -100,6 +100,45 @@ class PessoaController {
         }
     }
 
+    static async updateMatricula(req, res) {
+        const { idEstudante, idMatricula } = req.params
+        const matriculaUpdate = req.body
+        try {
+
+            await database.Matriculas.update(matriculaUpdate, { where: { id: Number(idMatricula), estudante_id: Number(idEstudante) } })
+            const one = await database.Matriculas.findOne({ where: { id: Number(idMatricula), estudante_id: Number(idEstudante) } })
+            return res.status(200).json(one)
+        } catch (error) {
+            return res.status(400).json(error.message)
+        }
+    }
+
+    static async deleteMatricula(req, res) {
+        const { idMatricula } = req.params
+
+        try {
+            await database.Matriculas.destroy({ where: { id: Number(idMatricula) } })
+
+            return res.status(200).json(`id: ${id} removido com sucesso!`)
+
+        } catch (error) {
+            return res.status(400).json(error.message)
+        }
+    }
+
+    static async deleteMatriculaByEstudante(req, res) {
+        const { idEstudante, idMatricula } = req.params
+
+        try {
+            await database.Matriculas.destroy({ where: { id: Number(idMatricula), id: Number(idEstudante) } })
+
+            return res.status(200).json(`id: ${id} removido com sucesso!`)
+
+        } catch (error) {
+            return res.status(400).json(error.message)
+        }
+    }
+
 
 }
 
