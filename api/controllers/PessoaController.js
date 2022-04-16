@@ -139,6 +139,19 @@ class PessoaController {
         }
     }
 
+    static async undoPessoa(req, res) {
+        const { id } = req.params
+
+        try {
+
+            await database.Pessoas.restore({ where: { id: Number(id) } })
+
+            return res.status(200).json(`Undo para pessoa com id: ${id} realizado com sucesso!`)
+        } catch (error) {
+            return res.status(400).json(error.message)
+        }
+    }
+
 
 }
 
