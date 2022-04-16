@@ -20,6 +20,7 @@ router.get('/pessoas/:idEstudante/matriculas/', PessoaController.getMatriculasCo
 router.get('/pessoas/matriculas/:turmaId/confirmadas', PessoaController.getMatriculasByTurma)
 router.get('/pessoas/matriculas/lotada', PessoaController.getTurmasLotadas)
 router.post('/pessoas/:idEstudante/matriculas', PessoaController.createMatricula)
+router.post('/pessoas/:idEstudante/cancela', PessoaController.desativaPessoa)
 router.put('/pessoas/:idEstudante/matriculas/:idMatricula', PessoaController.updateMatricula)
 router.delete('/pessoas/:idEstudante/matriculas/:idMatricula', PessoaController.deleteMatriculaByEstudante)
     // router.delete('/matriculas/:idMatricula', PessoaController.deleteMatricula)
