@@ -16,6 +16,7 @@ router.delete('/pessoas/:id', PessoaController.delete)
 // Matriculas
 
 router.get('/pessoas/:idEstudante/matriculas/:idMatricula', PessoaController.getMatricula)
+router.get('/pessoas/:idEstudante/matriculas/', PessoaController.getMatriculasConfirmadas)
 router.post('/pessoas/:idEstudante/matriculas', PessoaController.createMatricula)
 router.put('/pessoas/:idEstudante/matriculas/:idMatricula', PessoaController.updateMatricula)
 router.delete('/pessoas/:idEstudante/matriculas/:idMatricula', PessoaController.deleteMatriculaByEstudante)

@@ -162,6 +162,21 @@ class PessoaController {
         }
     }
 
+    static async getMatriculasConfirmadas(req, res) {
+        const { idEstudante } = req.params
+
+        try {
+
+            const pessoas = await database.Pessoas.findOne({ where: { id: Number(idEstudante) } })
+            const matriculas = await pessoas.getAulasMatriculadas()
+
+            return res.status(200).json(matriculas)
+
+        } catch (error) {
+            return res.status(400).json(error.message)
+        }
+    }
+
 
 }
 

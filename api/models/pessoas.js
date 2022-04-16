@@ -10,12 +10,24 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
+
+            // models.Matriculas.addScope('confirmado', {
+            //     where: {
+            //         status: 'confirmado'
+            //     }
+            // })
+
             Pessoas.hasMany(models.Turmas, {
                 foreignKey: 'docente_id'
             })
             Pessoas.hasMany(models.Matriculas, {
-                foreignKey: 'estudante_id'
+                foreignKey: 'estudante_id',
+                scope: { status: 'confirmado' }, //usando mixins
+                as: 'aulasMatriculadas'
             })
+
+
+            // Pessoas.hasMany(models.Matriculas.scope('confirmado'), { as: 'aulasMatriculadas' });
         }
     }
     Pessoas.init({
@@ -48,7 +60,8 @@ module.exports = (sequelize, DataTypes) => {
         scopes: {
             onlyAtivoTrue: { where: { ativo: true } }
             //name: { constraint: valor}
-        }
+        },
+
     });
     return Pessoas;
 };
