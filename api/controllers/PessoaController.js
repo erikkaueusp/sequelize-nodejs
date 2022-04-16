@@ -29,6 +29,16 @@ class PessoaController {
     }
 
 
+    static async getAllAtivo(req, res) {
+
+        try {
+            const all = await database.Pessoas.scope('onlyAtivoTrue').findAll()
+            return res.status(200).json(all)
+        } catch (error) {
+            return res.status(400).json(error.message)
+        }
+    }
+
     //GET ONE
 
     static async getId(req, res) {

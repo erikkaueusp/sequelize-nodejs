@@ -6,6 +6,7 @@ const router = Router()
 // Pessoas
 
 router.get('/pessoas', PessoaController.getAll)
+router.get('/pessoas/ativos', PessoaController.getAllAtivo)
 router.get('/pessoas/:id', PessoaController.getId)
 router.post('/pessoas', PessoaController.createPessoa)
 router.post('/pessoas/:id/undo', PessoaController.undoPessoa)
