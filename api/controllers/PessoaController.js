@@ -49,7 +49,7 @@ class PessoaController {
         const { id } = req.params
         try {
 
-            const one = await database.Pessoas.findOne({ where: { id: Number(id) } })
+            const one = await servicePessoas.getId(id)
             return res.status(200).json(one)
         } catch (error) {
             return res.status(400).json(error.message)
@@ -66,9 +66,9 @@ class PessoaController {
         try {
 
 
-            await database.Pessoas.update(pessoaUpdate, { where: { id: Number(id) } })
+            await servicePessoas.update(pessoaUpdate, id)
 
-            const responsePessoa = await database.Pessoas.findOne({ where: { id: Number(id) } })
+            const responsePessoa = await servicePessoas.getId(id)
 
             return res.status(200).json(responsePessoa)
         } catch (error) {
@@ -78,11 +78,12 @@ class PessoaController {
 
 
     // DELETE
+
     static async delete(req, res) {
         const { id } = req.params
 
         try {
-            await database.Pessoas.destroy({ where: { id: Number(id) } })
+            servicePessoas.delete(id)
 
             return res.status(200).json(`id: ${id} removido com sucesso!`)
 
