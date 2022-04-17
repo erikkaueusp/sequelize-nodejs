@@ -4,7 +4,7 @@ const Op = Sequelize.Op
 
 const Services = require('../services/Services')
 
-const serviceTurmas = new Services('turmas')
+const serviceTurmas = new Services('Turmas')
 
 
 class TurmaController {

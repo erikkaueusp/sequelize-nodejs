@@ -3,7 +3,7 @@
 
 const Services = require('../services/Services')
 
-const servicePessoas = new Services('pessoas')
+const servicePessoas = new Services('Pessoas')
 class PessoaController {
 
 

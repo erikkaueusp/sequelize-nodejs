@@ -1,7 +1,7 @@
 const database = require('../models')
 const Services = require('../services/Services')
 
-const serviceNiveis = new Services('niveis')
+const serviceNiveis = new Services('Niveis')
 class NivelController {
 
     static async getAll(req, res) {
