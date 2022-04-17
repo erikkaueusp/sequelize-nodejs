@@ -12,7 +12,7 @@ class PessoaController {
     static async createPessoa(req, res) {
         const pessoa = req.body
         try {
-            const pessoaCreated = await database.Pessoas.create(pessoa)
+            const pessoaCreated = await servicePessoas.create(pessoa)
             return res.status(201).json(pessoaCreated)
         } catch (error) {
             return res.status(400).json(error.message)

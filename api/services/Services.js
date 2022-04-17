@@ -6,6 +6,10 @@ class Services {
         this.model = model
     }
 
+    async create(entity) {
+        return database[this.model].create(entity)
+    }
+
     async getAll() {
         return database[this.model].findAll()
     }

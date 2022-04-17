@@ -28,7 +28,7 @@ class TurmaController {
     static async createTurma(req, res) {
         const turma = req.body
         try {
-            const turmaCreated = await database.Turmas.create(turma)
+            const turmaCreated = await serviceTurmas.create(turma)
             return res.status(201).json(turmaCreated)
         } catch (error) {
             return res.status(400).json(error.message)
