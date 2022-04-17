@@ -1,7 +1,7 @@
-const database = require('../models')
-const Services = require('../services/Services')
+const { NivelService } = require('../services')
+const serviceNiveis = new NivelService()
 
-const serviceNiveis = new Services('Niveis')
+
 class NivelController {
 
     static async getAll(req, res) {

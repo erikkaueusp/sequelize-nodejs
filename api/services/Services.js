@@ -31,6 +31,24 @@ class Services {
         database[this.model].destroy({ where: { id: Number(id) } })
 
     }
+
+
+
+    // async atualizaRegistro(dadosAtualizados, id, transacao = {}) {
+    //     return database[this.nomeDoModelo]
+    //         .update(dadosAtualizados, { where: { id: id } }, transacao)
+    // }
+
+    // async atualizaRegistros(dadosAtualizados, where, transacao = {}) {
+    //     return database[this.nomeDoModelo]
+    //         .update(dadosAtualizados, { where: {...where } }, transacao)
+    // }
+
+    // async encontraEContaRegistros(where = {}, agregadores) {
+    //     return database[this.nomeDoModelo]
+    //       .findAndCountAll({ where: { ...where }, ...agregadores })
+    //   }
+
 }
 
 module.exports = Services

@@ -4,10 +4,13 @@ const Op = Sequelize.Op
 
 const Services = require('../services/Services')
 
-const serviceTurmas = new Services('Turmas')
+const { TurmaService } = require('../services')
+const serviceTurmas = new TurmaService()
 
 
 class TurmaController {
+
+    // TODO resolver problemas para mandar para a classe de serviço
 
     static async getAll(req, res) {
         const { dataInicial, dataFinal } = req.query

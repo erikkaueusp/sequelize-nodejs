@@ -1,9 +1,8 @@
 // const database = require('../models')
 // const Sequelize = require('sequelize')
 
-const Services = require('../services/Services')
-
-const servicePessoas = new Services('Pessoas')
+const { PessoaService } = require('../services')
+const servicePessoas = new PessoaService()
 class PessoaController {
 
 
@@ -36,7 +35,7 @@ class PessoaController {
     static async getAllAtivo(req, res) {
 
         try {
-            const all = await database.Pessoas.scope('onlyAtivoTrue').findAll()
+            const all = await servicePessoas.getAllAtivos()
             return res.status(200).json(all)
         } catch (error) {
             return res.status(400).json(error.message)
