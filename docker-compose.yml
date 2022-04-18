@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  service_backend:
+    container_name: backend_node
+    image: my-test-node:0.0.2
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    networks:
+      - app-connect
+    depends_on:
+      - post_db
+  post_db:
+    container_name: db_postgres
+    image: "postgres:12"
+    ports:
+      - "5432:5432"
+    networks:
+      - app-connect
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=escola_ingles
+
+networks:
+  app-connect:
+      driver: bridge
